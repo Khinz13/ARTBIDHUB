@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>ArtBidHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      h5.card-title {
+        font-family: "Georgia", serif;
+        color: #000000;
+        font-size: 24px;
+      }
+
+      .card-text {
+        font-size: 16px;
+        color: #2b2828;
+      }
+
+      .form-control {
+        padding: 8px;
+        font-size: 1rem;
+      }
+
+      .form-control::placeholder {
+        color: #adb5bd;
+        font-size: 0.9rem;
+      }
+
+      #bidHistory .list-group-item {
+        font-weight: 500;
+        font-size: 1rem;
+        background-color: #e9ecef;
+        color: #495057;
+      }
+
+      .card-body {
+        background-color: #ffffff;
+        border-radius: 10px;
+        font-family: monospace;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .text-center {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .custom-img-size {
+        max-width: 1000px;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 1000px;
+      }
+
+      .card img {
+        height: 300px;
+        object-fit: cover;
+      }
+      .btn.btn-dark:hover {
+        background-color: #6c757d; /* Change background color on hover */
+        color: black; /* Change text color on hover */
+        border-color: rgb(73, 71, 71);
+      }
+      .btn.btn-dark {
+        width: 70%;
+      }
+    </style>
+  </head>
+  <body class="bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+      <div class="container-xxl">
+        <a href="index.html" class="navbar-brand">
+          <img src="images/LOGO_FINAL.png" alt="brand logo" class="w-25" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="main-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="main-nav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link text-grey fw-bolder"
+                href="#sidebarAbout"
+                data-bs-toggle="offcanvas"
+                role="button"
+                aria-controls="sidebar"
+              >
+                About
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-grey fw-bolder"
+                href="#sidebarContact"
+                data-bs-toggle="offcanvas"
+                role="button"
+                aria-controls="sidebar"
+              >
+                Contact
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-grey fw-bolder" href="login.html"
+                >Logout</a
+              >
+            </li>
+            <li class="nav-item">
+              <form class="d-flex" action="/search" method="GET">
+                <div class="input-group searchBar">
+                  <input
+                    type="search"
+                    name="q"
+                    class="form-control"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <span class="input-group-text" id="searchIcon">
+                    <i class="bi bi-search"></i>
+                  </span>
+                </div>
+              </form>
+            </li>
+            <li class="nav-item">
+              <a
+                href="artist-profile.html"
+                class="nav-link text-grey fw-bolder mx-3 d-flex align-items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-person"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"
+                  />
+                </svg>
+                <span class="ms-2">Richard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="#sidebarNotif"
+                data-bs-toggle="offcanvas"
+                role="button"
+                aria-controls="sidebar"
+                class="nav-link text-grey fw-bolder mx-3 position-relative"
+              >
+                <i class="bi bi-bell" style="font-size: 20px"></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  >7</span
+                >
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="#sidebarMess"
+                data-bs-toggle="offcanvas"
+                role="button"
+                aria-controls="sidebar"
+                class="nav-link text-grey fw-bolder mx-3 position-relative"
+              >
+                <i class="bi bi-envelope" style="font-size: 20px"></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  >3</span
+                >
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                data-bs-toggle="modal"
+                data-bs-target="#ModalWallet"
+                class="nav-link text-grey fw-bolder mx-3 position-relative"
+              >
+                <i class="bi bi-wallet" style="font-size: 20px"></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                  >₱2,543</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Centering the cards and their content -->
+    <div class="container-lg d-flex justify-content-center my-5">
+      <!-- Card 1 -->
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title display-6 lead fw-bolder text-dark text-center">
+            Usagi Tsukino (Sailor Moon Fan Art)
+          </h5>
+          <img
+            src="images/olyvArt2.png"
+            alt="Floral Arrangement"
+            class="img-fluid my-2 custom-img-size tt"
+            data-bs-placement="bottom"
+            title="Check Art Details"
+            href="#sidebarT1"
+            data-bs-toggle="offcanvas"
+            role="button"
+            aria-controls="sidebar"
+          />
+
+          <p class="card-text">Artist: <strong>Olyv Dedal</strong></p>
+          <p class="card-text">
+            Highest Bid: <strong id="currentBid1">60</strong>
+          </p>
+          <p class="card-text">Starting Price: <strong>₱50</strong></p>
+          <p class="card-text">
+            Countdown: <span class="timer fw-bold" id="countdown3"></span>
+          </p>
+          <form id="bid-form1" onsubmit="return confirmBid()">
+            <div class="mb-3">
+              <label for="bidAmount1" class="form-label fw-bold">
+                Your Bid Amount<i class="bi bi-currency-peso"></i>:</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="bidAmount1"
+                min="50"
+                placeholder="Enter your bid"
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-dark rounded-pill">
+                Bid
+              </button>
+            </div>
+          </form>
+          <div class="mt-4">
+            <h6 class="fw-bold">Bid History:</h6>
+            <ul id="bidHistory1" class="list-group">
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User1: ₱50
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User2: ₱55
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User3: ₱60
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="container-lg d-flex justify-content-center">
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title display-6 lead fw-bolder text-dark">
+            Mitsukinomiya
+          </h5>
+          <img
+            src="images/olyvArt.png"
+            alt="Floral Arrangement"
+            class="img-fluid my-2 custom-img-size tt"
+            data-bs-placement="bottom"
+            title="Check Art Details"
+            href="#sidebarT2"
+            data-bs-toggle="offcanvas"
+            role="button"
+            aria-controls="sidebar"
+          />
+          <p class="card-text">Artist: <strong>Olyv Dedal</strong></p>
+          <p class="card-text">
+            Highest Bid: <strong id="currentBid2">60</strong>
+          </p>
+          <p class="card-text">Starting Price: <strong>₱40</strong></p>
+          <p class="card-text">
+            Countdown: <span class="timer fw-bold" id="countdown4"></span>
+          </p>
+          <form id="bid-form2" onsubmit="return confirmBid2()">
+            <div class="mb-3">
+              <label for="bidAmount2" class="form-label fw-bold">
+                Your Bid Amount<i class="bi bi-currency-peso"></i>:</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="bidAmount2"
+                min="40"
+                placeholder="Enter your bid"
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-dark rounded-pill">
+                Bid
+              </button>
+            </div>
+          </form>
+          <div class="mt-4">
+            <h6 class="fw-bold">Bid History:</h6>
+            <ul id="bidHistory2" class="list-group">
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User1: ₱50
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User2: ₱55
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User3: ₱60
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="container-lg d-flex justify-content-center">
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title display-6 lead fw-bolder text-dark">
+            Huleeb Touka
+          </h5>
+          <img
+            src="images/olyvArt1.png"
+            alt="Floral Arrangement"
+            class="img-fluid my-2 custom-img-size tt"
+            data-bs-placement="bottom"
+            title="Check Art Details"
+            href="#sidebarT3"
+            data-bs-toggle="offcanvas"
+            role="button"
+            aria-controls="sidebar"
+          />
+          <p class="card-text">Artist: <strong>Olyv Dedal</strong></p>
+          <p class="card-text">
+            Highest Bid: <strong id="currentBid3">60</strong>
+          </p>
+          <p class="card-text">Starting Price: <strong>₱40</strong></p>
+          <p class="card-text">
+            Countdown: <span class="timer fw-bold" id="countdown5"></span>
+          </p>
+          <form id="bid-form3" onsubmit="return confirmBid3()">
+            <div class="mb-3">
+              <label for="bidAmount3" class="form-label fw-bold">
+                Your Bid Amount<i class="bi bi-currency-peso"></i>:</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="bidAmount3"
+                min="40"
+                placeholder="Enter your bid"
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-dark rounded-pill">
+                Bid
+              </button>
+            </div>
+          </form>
+          <div class="mt-4">
+            <h6 class="fw-bold">Bid History:</h6>
+            <ul id="bidHistory3" class="list-group">
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User1: ₱50
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User2: ₱55
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-person-circle"></i> User3: ₱60
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offcanvas About Section -->
+    <div
+      class="offcanvas offcanvas-top"
+      tabindex="-1"
+      id="sidebarAbout"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <div class="offcanvas-title lead fw-bolder display-2 about-heading">
+          ArtBidHub
+        </div>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body aboutBtn-font">
+        ArtBidHub is a platform for artists to showcase their work and for art
+        enthusiasts to bid on unique creations, fostering creativity and
+        community connection.
+      </div>
+    </div>
+    <!-- Offcanvas Art 1 Section -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="sidebarT1"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body p-3">
+        <div class="card border-3">
+          <div class="card-body">
+            <img class="px-3 card-img-top" src="images/olyvArt2.png" alt="#" />
+            <div class="text-start mt-2">
+              <p class="fst-normal">Dimensions: 600 x 600</p>
+              <p class="fst-normal">Material Used: ******</p>
+            </div>
+            <footer class="text-end">
+              <i class="bi bi-eye"> 1254 </i>
+              <i class="bi bi-heart-fill"></i> 1198
+            </footer>
+          </div>
+
+          <!-- Comment Section -->
+          <div class="card-body">
+            <h5 class="card-title text-decoration-underline">Comments</h5>
+            <div id="comments-section-1">
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 1:</strong>
+                  Such an incredible talent! I would love to own this.
+                </p>
+              </div>
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 2:</strong>
+                  I’m in love with this piece! Great attention to detail.
+                </p>
+              </div>
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 3:</strong>
+                  How long did this take you to complete?
+                </p>
+              </div>
+            </div>
+            <form id="comment-form-1" class="mt-3">
+              <div class="mb-3">
+                <label for="comment-input-1" class="form-label"
+                  >Add a comment:</label
+                >
+                <textarea
+                  id="comment-input-1"
+                  class="form-control"
+                  rows="2"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-secondary">
+                Post Comment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Offcanvas Art 2 Section -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="sidebarT2"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="card border-3">
+          <div class="card-body">
+            <img class="px-3 card-img-top" src="images/olyvArt.png" alt="#" />
+            <div class="text-start mt-2">
+              <p class="fst-normal">Dimensions: 600 x 600</p>
+              <p class="fst-normal">Material Used: ******</p>
+            </div>
+            <footer class="text-end">
+              <i class="bi bi-eye"> 690</i> <i class="bi bi-heart-fill"></i> 420
+            </footer>
+          </div>
+
+          <!-- Comment Section -->
+          <div class="card-body">
+            <h5 class="card-title text-decoration-underline">Comments</h5>
+            <div id="comments-section-2">
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 1:</strong>
+                  Fan art level: expert!
+                </p>
+              </div>
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 2:</strong>
+                  CUTIEEEE
+                </p>
+              </div>
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 3:</strong>
+                  This would look amazing in my collection
+                </p>
+              </div>
+            </div>
+            <form id="comment-form-2" class="mt-3">
+              <div class="mb-3">
+                <label for="comment-input-2" class="form-label"
+                  >Add a comment:</label
+                >
+                <textarea
+                  id="comment-input-2"
+                  class="form-control"
+                  rows="2"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-secondary">
+                Post Comment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offcanvas Art 3 Section -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="sidebarT3"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="card border-3">
+          <div class="card-body">
+            <img class="px-3 card-img-top" src="images/olyvArt1.png" alt="#" />
+            <div class="text-start mt-2">
+              <p class="fst-normal">Dimensions: 800 x 600</p>
+              <p class="fst-normal">Material Used: ******</p>
+            </div>
+            <footer class="text-end">
+              <i class="bi bi-eye"> 230</i> <i class="bi bi-heart-fill"></i> 190
+            </footer>
+          </div>
+
+          <!-- Comment Section -->
+          <div class="card-body">
+            <h5 class="card-title text-decoration-underline">Comments</h5>
+            <div id="comments-section-3">
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 1:</strong>
+                  Your art brings so much joy!
+                </p>
+              </div>
+              <div class="comment">
+                <p>
+                  <strong><i class="bi bi-person-circle"></i> User 2:</strong>
+                  I love seeing new pieces from this artist!
+                </p>
+              </div>
+            </div>
+            <form id="comment-form-3" class="mt-3">
+              <div class="mb-3">
+                <label for="comment-input-1" class="form-label"
+                  >Add a comment:</label
+                >
+                <textarea
+                  id="comment-input-3"
+                  class="form-control"
+                  rows="2"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-secondary">
+                Post Comment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offcanvas Contact Section -->
+    <div
+      class="offcanvas offcanvas-top"
+      tabindex="-1"
+      id="sidebarContact"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <div class="offcanvas-title lead fw-bolder display-2 contact-heading">
+          ArtBidHub
+        </div>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body contactBtn-font">
+        <ul>
+          <li>
+            Email:
+            <a href="mailto:support@artbidhub.com">support@artbidhub.com</a>
+            <ul>
+              <li>
+                Reach out to us for any inquiries, issues, or feedback related
+                to our platform.
+              </li>
+            </ul>
+          </li>
+          <li>Phone: +639772318917</li>
+          <li>
+            Social Media:
+            <ul>
+              <li>Instagram: @ArtBidHub</li>
+              <li>Facebook: @ArtBidHub</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="sidebarNotif"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <div
+          class="offcanvas-title lead fw-bolder display-2 contact-heading text-center"
+        ></div>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body contactBtn-font">
+        <div class="container mt-5">
+          <div class="my-5">
+            <h2 class="text-center">Notifications</h2>
+            <ul class="list-group">
+              <li class="list-group-item rounded-3 my-3 border-5">
+                🎨
+                <strong
+                  >Your bid on "Starry Night Replica" was successful! You won
+                  the bid.</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>2 mins ago</small></span
+                >
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5">
+                ⏳
+                <strong
+                  >Bidding for "Sunset Overdrive" will end in 1 hour.</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>3 minutes ago</small></span
+                >
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5">
+                ❌
+                <strong
+                  >Your bid on "Abstract Dreams" was outbid. Try again before
+                  the auction closes.</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>5 minutes ago</small></span
+                >
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5">
+                🖌️
+                <strong
+                  >New artwork posted by the artist you previously bidded on.
+                  Check out "Dreamscape Evolution".</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>1 hours ago</small></span
+                >
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5">
+                🔔
+                <strong
+                  >Reminder: Final auction for "Golden Horizon" is tomorrow.
+                  Don’t miss it!</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>4 hours ago</small></span
+                >
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5">
+                📈
+                <strong
+                  >The bid you placed on "Mountain Majesty" is now in the
+                  lead.</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>1 day ago</small></span
+                >
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5">
+                🖼️
+                <strong
+                  >"Evening Glow" by your favorite artist is now available for
+                  bidding. Don’t miss it!</strong
+                >
+                <span class="text-muted d-block mt-2"
+                  ><small>1 day ago</small></span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="sidebarMess"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <div
+          class="offcanvas-title lead fw-bolder display-2 contact-heading text-center"
+        ></div>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body contactBtn-font">
+        <div class="container mt-5">
+          <div class="my-5">
+            <h2 class="text-center">Messages</h2>
+            <ul class="list-group">
+              <li class="list-group-item rounded-3 my-3 border-5 rounded-2">
+                <i class="bi bi-person-circle"></i>
+                <span class="fw-bolder">Juarlito</span>
+                <p>"Amazing use of colors!"</p>
+                <span class="text-muted d-block mt-2"
+                  ><small>2 mins ago</small></span
+                >
+                <span class="btn btn-secondary mt-2">Reply</span>
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5 rounded-2">
+                <i class="bi bi-person-circle"></i>
+                <span class="fw-bolder">Paulo</span>
+                <p>"I was hoping we could collab?"</p>
+                <span class="text-muted d-block mt-2"
+                  ><small>2 mins ago</small></span
+                >
+                <span class="btn btn-secondary mt-2">Reply</span>
+              </li>
+              <li class="list-group-item rounded-3 my-3 border-5 rounded-2">
+                <i class="bi bi-person-circle"></i>
+                <span class="fw-bolder">Bitoy</span>
+                <p>"I love K-STORE TAGUM"</p>
+                <span class="text-muted d-block mt-2"
+                  ><small>2 mins ago</small></span
+                >
+                <span class="btn btn-secondary mt-2">Reply</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="ModalWallet"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Credit Card</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container my-5">
+              <div class="card border-3">
+                <div class="card-body">
+                  <form>
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cardNumber"
+                          placeholder="Card Number"
+                        />
+                      </div>
+                      <div class="col-md-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="expiryDate"
+                          placeholder="MM / YY"
+                        />
+                      </div>
+                      <div class="col-md-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cvc"
+                          placeholder="CVC"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        placeholder="Full Name"
+                      />
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="Amount"
+                          placeholder="Amount"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <select class="form-select" id="country">
+                          <option selected>Select Country</option>
+                          <option value="1">United States</option>
+                          <option value="2">Canada</option>
+                          <option value="3">Philippines</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="postalCode"
+                          placeholder="Postal Code"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="address1"
+                          placeholder="Address Line 1"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="address2"
+                          placeholder="Address Line 2"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="city"
+                          placeholder="City"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="state"
+                          placeholder="State, Province, or Region"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="phoneNumber"
+                        placeholder="Phone Number"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="termsCheckbox"
+              />
+              <label class="form-check-label" for="termsCheckbox">
+                I agree to ArtBidHub's
+                <a href="#" class="text-primary"
+                  >General Terms and Conditions of Sale</a
+                >. I understand that all bids are binding and may not be
+                retracted.
+              </label>
+            </div>
+
+            <div class="text-center">
+              <button
+                type="submit"
+                id="confirmButton"
+                class="btn btn-secondary disabled-btn"
+                disabled
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const checkbox = document.getElementById("termsCheckbox");
+      const confirmButton = document.getElementById("confirmButton");
+
+      // Enable or disable the Confirm Bid button based on checkbox status
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          confirmButton.disabled = false;
+          confirmButton.classList.remove("disabled-btn");
+        } else {
+          confirmButton.disabled = true;
+          confirmButton.classList.add("disabled-btn");
+        }
+      });
+    </script>
+
+    <script>
+      function setupBidForm(formId, bidAmountId, currentBidId, bidHistoryId) {
+        document
+          .getElementById(formId)
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const bidAmount = parseFloat(
+              document.getElementById(bidAmountId).value
+            );
+            const bidHistory = document.getElementById(bidHistoryId);
+
+            // Add the new bid to the bid history list
+            const newBid = document.createElement("li");
+            newBid.className = "list-group-item";
+            newBid.textContent = `You: ₱${bidAmount}`;
+            bidHistory.appendChild(newBid);
+
+            // Reset the bid input field
+            document.getElementById(bidAmountId).value = "";
+
+            // Update the highest bid
+            updateHighestBid(bidHistory, currentBidId);
+          });
+      }
+
+      // Function to update the highest bid
+      function updateHighestBid(bidHistory, currentBidId) {
+        let highestBid = 0;
+
+        // Loop through all the bids in the bid history to find the highest one
+        const bids = bidHistory.getElementsByTagName("li");
+        for (let i = 0; i < bids.length; i++) {
+          const bidText = bids[i].textContent;
+          const bidValue = parseFloat(bidText.split("₱")[1]);
+          if (bidValue > highestBid) {
+            highestBid = bidValue;
+          }
+        }
+
+        // Update the Current Bid text with the highest bid
+        document.getElementById(currentBidId).textContent = `₱${highestBid}`;
+      }
+
+      // Setup bid forms for each card
+      window.onload = function () {
+        setupBidForm("bid-form1", "bidAmount1", "currentBid1", "bidHistory1");
+        setupBidForm("bid-form2", "bidAmount2", "currentBid2", "bidHistory2");
+        setupBidForm("bid-form3", "bidAmount3", "currentBid3", "bidHistory3");
+
+        // Initialize the highest bid for each card
+        updateHighestBid(document.getElementById("bidHistory1"), "currentBid1");
+        updateHighestBid(document.getElementById("bidHistory2"), "currentBid2");
+        updateHighestBid(document.getElementById("bidHistory3"), "currentBid3");
+      };
+    </script>
+
+    <script>
+      // Set the countdown times in milliseconds (e.g., 3 days for each)
+      const countdownDates = [
+        new Date().getTime() + 3 * 24 * 60 * 60 * 1000, // For countdown1
+        new Date().getTime() + 5 * 24 * 60 * 60 * 1000, // For countdown2
+        new Date().getTime() + 6 * 24 * 60 * 60 * 1000, // For countdown3
+      ];
+
+      // Select all countdown elements
+      const countdownElements = [
+        document.getElementById("countdown3"),
+        document.getElementById("countdown4"),
+        document.getElementById("countdown5"),
+      ];
+
+      // Update the countdown every second
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+
+        countdownDates.forEach((countdownDate, index) => {
+          const distance = countdownDate - now;
+
+          // Calculate days, hours, minutes, and seconds
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result in the countdown element
+          countdownElements[
+            index
+          ].innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+          // If the countdown is finished, display a message
+          if (distance < 0) {
+            clearInterval(timer);
+            countdownElements[index].innerHTML = "EXPIRED";
+          }
+        });
+      }, 1000);
+    </script>
+
+    <script>
+      const tooltips = document.querySelectorAll(".tt");
+      tooltips.forEach((t) => {
+        new bootstrap.Tooltip(t);
+      });
+    </script>
+
+    <script>
+      document
+        .querySelectorAll("form[id^='comment-form']")
+        .forEach(function (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent page refresh
+
+            const formId = form.id.split("-")[2]; // Get the number (1, 2, or 3) from the form ID
+            const commentInput = document.getElementById(
+              `comment-input-${formId}`
+            );
+            const newComment = commentInput.value.trim();
+
+            if (newComment) {
+              const commentsSection = document.getElementById(
+                `comments-section-${formId}`
+              );
+
+              // Create a new comment div
+              const commentDiv = document.createElement("div");
+              commentDiv.className = "comment";
+              commentDiv.innerHTML = `<p><strong>You:</strong> ${newComment}</p>`;
+
+              // Append the new comment to the comments section
+              commentsSection.appendChild(commentDiv);
+
+              // Clear the input
+              commentInput.value = "";
+            }
+          });
+        });
+    </script>
+
+    <script>
+      function confirmBid() {
+        const bidAmount = document.getElementById("bidAmount1").value;
+        if (bidAmount) {
+          return confirm(
+            `Are you sure you want to place a bid of ₱${bidAmount}?`
+          );
+        } else {
+          alert("Please enter a valid bid amount.");
+          return false;
+        }
+      }
+    </script>
+
+    <script>
+      function confirmBid2() {
+        const bidAmount = document.getElementById("bidAmount2").value;
+        if (bidAmount) {
+          return confirm(
+            `Are you sure you want to place a bid of ₱${bidAmount}?`
+          );
+        } else {
+          alert("Please enter a valid bid amount.");
+          return false;
+        }
+      }
+    </script>
+
+    <script>
+      function confirmBid3() {
+        const bidAmount = document.getElementById("bidAmount3").value;
+        if (bidAmount) {
+          return confirm(
+            `Are you sure you want to place a bid of ₱${bidAmount}?`
+          );
+        } else {
+          alert("Please enter a valid bid amount.");
+          return false;
+        }
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
